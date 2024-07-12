@@ -1,10 +1,9 @@
 package com.example.user.controller;
 
 import com.example.user.dto.UserDto;
-import com.example.user.entity.UserEntity;
+import com.example.user.jpa.UserEntity;
 import com.example.user.service.UserService;
 import com.example.user.vo.RequestUser;
-import com.example.user.vo.ResponseOrder;
 import com.example.user.vo.ResponseUser;
 import lombok.RequiredArgsConstructor;
 import org.modelmapper.ModelMapper;

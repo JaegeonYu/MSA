@@ -1,14 +1,12 @@
 package com.example.user.service;
 
 import com.example.user.dto.UserDto;
-import com.example.user.entity.UserEntity;
-import com.example.user.repository.UserRepository;
+import com.example.user.jpa.UserEntity;
+import com.example.user.jpa.UserRepository;
 import com.example.user.vo.ResponseOrder;
-import com.example.user.vo.ResponseUser;
 import lombok.RequiredArgsConstructor;
 import org.modelmapper.ModelMapper;
 import org.modelmapper.convention.MatchingStrategies;
-import org.modelmapper.spi.MatchingStrategy;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;

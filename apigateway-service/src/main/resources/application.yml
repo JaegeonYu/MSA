@@ -18,3 +18,7 @@ spring:
           uri: lb://USER-SERVICE  # ???? ??
           predicates:
             - Path=/user-service/** # user-service? ???? ?? ?? ???
+        - id: catalog-service # gateway ?? id
+          uri: lb://CATALOG-SERVICE
+          predicates:
+            - Path=/catalog-service/**
