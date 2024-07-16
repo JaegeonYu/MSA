@@ -31,7 +31,14 @@ spring:
           filters:
             - RemoveRequestHeader=Cookie
             - RewritePath=/user-service/(?<segment>.*), /$\{segment}
-
+        - id: user-service # actuator
+          uri: lb://USER-SERVICE  # ???? ??
+          predicates:
+            - Path=/user-service/actuator/**
+            - Method=GET, POST
+          filters:
+            - RemoveRequestHeader=Cookie
+            - RewritePath=/user-service/(?<segment>.*), /$\{segment}
         - id: user-service # 그 외
           uri: lb://USER-SERVICE  # ???? ??
           predicates:
@@ -41,6 +48,8 @@ spring:
             - RemoveRequestHeader=Cookie
             - RewritePath=/user-service/(?<segment>.*), /$\{segment}
             - AuthorizationHeaderFilter
+
+
         - id: catalog-service # gateway ?? id
           uri: lb://CATALOG-SERVICE
           predicates:
@@ -49,6 +58,17 @@ spring:
           uri: lb://ORDER-SERVICE
           predicates:
             - Path=/order-service/**
+    config:
+      name: ecommerce
+  config:
+    import: optional:configserver:http://localhost:8888
+  profiles:
+    active: prod
+#token: cloud config
+#  secret:
 
-token:
-  secret: cD08xCg+eiWnntQyYKCF/ZE7h9FbF5lN8DsNCZJVGN1IsXREyEmI/o4fEpqRYqL6eIQfFE/h6RFaQ4vQALY84Q==
+management:
+  endpoints:
+    web:
+      exposure:
+        include: refresh, health, beans, httpexchanges
