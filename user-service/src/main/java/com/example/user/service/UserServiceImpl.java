@@ -2,6 +2,7 @@ package com.example.user.service;
 
 import com.example.user.client.OrderServiceClient;
 import com.example.user.dto.UserDto;
+import com.example.user.error.FeignErrorDecoder;
 import com.example.user.jpa.UserEntity;
 import com.example.user.jpa.UserRepository;
 import com.example.user.vo.ResponseOrder;
@@ -25,6 +26,7 @@ public class UserServiceImpl implements UserService{
     private final PasswordEncoder passwordEncoder;
 
     private final OrderServiceClient orderServiceClient;
+    private final FeignErrorDecoder feignErrorDecoder;
 
     @Override
     public UserDto createUser(UserDto user) {

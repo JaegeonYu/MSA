@@ -1,5 +1,6 @@
 package com.example.user;
 
+import com.example.user.error.FeignErrorDecoder;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
@@ -21,4 +22,8 @@ public class UserApplication {
         return new BCryptPasswordEncoder();
     }
 
+    @Bean
+    public FeignErrorDecoder getFeignErrorDecoder(){
+        return new FeignErrorDecoder();
+    }
 }
