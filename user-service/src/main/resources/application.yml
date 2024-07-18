@@ -4,6 +4,11 @@ server:
 spring:
   application:
     name: user-service
+  rabbitmq:
+    host: 127.0.0.1
+    port: 5672
+    username: guest
+    password: guest
   h2:
     console:
       enabled: true
@@ -25,8 +30,8 @@ spring:
       name: ecommerce
   config:
     import: optional:configserver:http://localhost:8888
-  profiles:
-    active: dev
+#  profiles:
+#    active: dev
 
 eureka:
   instance:
@@ -52,4 +57,4 @@ management:
   endpoints:
     web:
       exposure:
-        include: refresh, health, beans
+        include: refresh, health, beans, busrefresh

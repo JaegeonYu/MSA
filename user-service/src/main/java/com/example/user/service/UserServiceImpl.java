@@ -1,5 +1,6 @@
 package com.example.user.service;
 
+import com.example.user.client.OrderServiceClient;
 import com.example.user.dto.UserDto;
 import com.example.user.jpa.UserEntity;
 import com.example.user.jpa.UserRepository;
@@ -23,7 +24,7 @@ public class UserServiceImpl implements UserService{
     private final UserRepository userRepository;
     private final PasswordEncoder passwordEncoder;
 
-
+    private final OrderServiceClient orderServiceClient;
 
     @Override
     public UserDto createUser(UserDto user) {
@@ -47,8 +48,9 @@ public class UserServiceImpl implements UserService{
 
         UserDto userDto = new ModelMapper().map(userEntity, UserDto.class);
 
-        List<ResponseOrder> orders = new ArrayList<>();
         // TODO order service 구현
+        List<ResponseOrder> orders = orderServiceClient.getOrders(userId);
+
         userDto.setOrders(orders);
 
         return userDto;
