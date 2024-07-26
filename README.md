@@ -20,7 +20,7 @@ $ docker-compose up -d
 
 [cloud-config git repository](https://github.com/JaegeonYu/cloud-config)
 
-### 1) Running Discovery-Service using docker compose
+### 2) Running Discovery-Service using docker compose
 
 ```bash
 $ cd discovery-service
