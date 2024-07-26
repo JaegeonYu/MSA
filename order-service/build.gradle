@@ -43,6 +43,18 @@ dependencies {
     implementation group: 'org.mariadb.jdbc', name: 'mariadb-java-client', version: '3.4.1'
 
     implementation group: 'org.springframework.kafka', name: 'spring-kafka'
+    // https://mvnrepository.com/artifact/io.micrometer/micrometer-observation
+
+    implementation group: 'org.springframework.boot', name: 'spring-boot-starter-actuator'
+    implementation group: 'io.micrometer', name: 'micrometer-observation'
+// https://mvnrepository.com/artifact/io.micrometer/micrometer-tracing-bridge-brave
+    implementation group: 'io.micrometer', name: 'micrometer-tracing-bridge-brave'
+// https://mvnrepository.com/artifact/io.zipkin.brave/brave-instrumentation-spring-web
+    implementation group: 'io.zipkin.brave', name: 'brave-instrumentation-spring-web'
+// https://mvnrepository.com/artifact/io.zipkin.reporter2/zipkin-reporter-brave
+    implementation group: 'io.zipkin.reporter2', name: 'zipkin-reporter-brave'
+// https://mvnrepository.com/artifact/io.github.openfeign/feign-micrometer
+    implementation group: 'io.github.openfeign', name: 'feign-micrometer'
 
 }
 
