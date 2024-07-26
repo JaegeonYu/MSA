@@ -7,6 +7,7 @@ import com.example.user.jpa.UserEntity;
 import com.example.user.jpa.UserRepository;
 import com.example.user.vo.ResponseOrder;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.modelmapper.ModelMapper;
 import org.modelmapper.convention.MatchingStrategies;
 import org.springframework.cloud.client.circuitbreaker.CircuitBreaker;
@@ -23,6 +24,7 @@ import java.util.UUID;
 
 @Service
 @RequiredArgsConstructor
+@Slf4j
 public class UserServiceImpl implements UserService{
     private final UserRepository userRepository;
     private final PasswordEncoder passwordEncoder;
@@ -54,11 +56,11 @@ public class UserServiceImpl implements UserService{
 
         // TODO order service 구현
 //        List<ResponseOrder> orders = orderServiceClient.getOrders(userId);
-
+        log.info("Before call order-microservice");
         CircuitBreaker circuitBreaker = circuitBreakerFactory.create("circuitbreaker");
         List<ResponseOrder> orders = circuitBreaker.run(() -> orderServiceClient.getOrders(userId),
                 throwable -> new ArrayList<>());
-
+        log.info("After call order-microservice");
         userDto.setOrders(orders);
 
         return userDto;

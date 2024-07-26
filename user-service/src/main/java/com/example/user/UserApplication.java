@@ -1,6 +1,8 @@
 package com.example.user;
 
 import com.example.user.error.FeignErrorDecoder;
+import io.micrometer.core.aop.TimedAspect;
+import io.micrometer.core.instrument.MeterRegistry;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
@@ -26,4 +28,6 @@ public class UserApplication {
     public FeignErrorDecoder getFeignErrorDecoder(){
         return new FeignErrorDecoder();
     }
+
+
 }

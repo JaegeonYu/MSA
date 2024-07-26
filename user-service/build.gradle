@@ -54,7 +54,7 @@ dependencies {
 
 
     // https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-starter-actuator
-    implementation group: 'org.springframework.boot', name: 'spring-boot-starter-actuator', version: '3.3.1'
+    implementation group: 'org.springframework.boot', name: 'spring-boot-starter-actuator'
 
     // https://mvnrepository.com/artifact/org.springframework.cloud/spring-cloud-starter-bus-amqp
     implementation group: 'org.springframework.cloud', name: 'spring-cloud-starter-bus-amqp', version: '4.1.2'
@@ -63,6 +63,23 @@ dependencies {
 
     // https://mvnrepository.com/artifact/org.springframework.cloud/spring-cloud-starter-circuitbreaker-resilience4j
     implementation group: 'org.springframework.cloud', name: 'spring-cloud-starter-circuitbreaker-resilience4j'
+
+
+
+    // https://mvnrepository.com/artifact/io.micrometer/micrometer-observation
+    implementation group: 'io.micrometer', name: 'micrometer-observation'
+// https://mvnrepository.com/artifact/io.micrometer/micrometer-tracing-bridge-brave
+    implementation group: 'io.micrometer', name: 'micrometer-tracing-bridge-brave'
+// https://mvnrepository.com/artifact/io.zipkin.brave/brave-instrumentation-spring-web
+    implementation group: 'io.zipkin.brave', name: 'brave-instrumentation-spring-web'
+// https://mvnrepository.com/artifact/io.zipkin.reporter2/zipkin-reporter-brave
+    implementation group: 'io.zipkin.reporter2', name: 'zipkin-reporter-brave'
+// https://mvnrepository.com/artifact/io.github.openfeign/feign-micrometer
+    implementation group: 'io.github.openfeign', name: 'feign-micrometer'
+
+
+    // https://mvnrepository.com/artifact/io.micrometer/micrometer-registry-prometheus
+    implementation group: 'io.micrometer', name: 'micrometer-registry-prometheus'
 
 
     compileOnly 'org.projectlombok:lombok'

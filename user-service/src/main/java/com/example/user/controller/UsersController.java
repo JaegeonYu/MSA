@@ -5,6 +5,7 @@ import com.example.user.jpa.UserEntity;
 import com.example.user.service.UserService;
 import com.example.user.vo.RequestUser;
 import com.example.user.vo.ResponseUser;
+import io.micrometer.core.annotation.Timed;
 import lombok.RequiredArgsConstructor;
 import org.modelmapper.ModelMapper;
 import org.modelmapper.convention.MatchingStrategies;
@@ -25,6 +26,7 @@ public class UsersController {
     private final UserService userService;
 
     @GetMapping("/health_check")
+    @Timed(value = "users.status", longTask = true)
     public String status(){
         return String.format("It's Working in User Service on PORT %s, token secret : %s, token time : %s" ,
                 environment.getProperty("local.server.port"), environment.getProperty("token.secret"),
@@ -32,6 +34,7 @@ public class UsersController {
     }
 
     @GetMapping("/welcome")
+    @Timed(value = "users.welcome", longTask = true)
     public String welcome(){
         return environment.getProperty("greeting.message");
     }
