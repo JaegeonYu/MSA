@@ -5,7 +5,7 @@ spring:
   application:
     name: user-service
   zipkin:
-    base-url: http://localhost:9411
+    base-url: http://zipkin:9411
     enabled: true
 
   rabbitmq:
@@ -33,7 +33,7 @@ spring:
     config:
       name: ecommerce
   config:
-    import: optional:configserver:http://localhost:8888
+    import: optional:configserver:http://config-service:8888
 #  profiles:
 #    active: dev
 

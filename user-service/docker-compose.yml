@@ -1,22 +1,22 @@
 version: '3.8'
 
 services:
-  apigateway-service:
+  user-service:
     build:
       context: .
       dockerfile: Dockerfile
-    image: yjk9805/apigateway-service:1.0
-    container_name: apigateway-service
+    image: yjk9805/user-service:1.0
+    container_name: user-service
     restart: always
     networks:
       - ecommerce-network
-    ports:
-      - "8000:8000"
     environment:
       - spring.cloud.config.name=ecommerce
       - spring.config.import=configserver:http://config-service:8888
       - spring.rabbitmq.host=rabbitmq
+      - spring.zipkin.base-url=http://zipkin:9411
       - eureka.client.serviceUrl.defaultZone=http://discovery-service:8761/eureka/
+      - logging.file=/api-logs/users-ws.log
 
 networks:
   ecommerce-network:
