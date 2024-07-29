@@ -1,0 +1,25 @@
+version: '3.8'
+
+services:
+  order-service:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: yjk9805/order-service:1.0
+    container_name: order-service
+    restart: always
+    networks:
+      - ecommerce-network
+    environment:
+      - spring.cloud.config.name=ecommerce
+      - spring.config.import=optional:configserver:http://config-service:8888
+      - spring.rabbitmq.host=rabbitmq
+      - spring.zipkin.base-url=http://zipkin:9411
+      - spring.datasource.url=jdbc:mariadb://mariadb-network:3306/mydb
+      - management.zipkin.tracing.endpoint=http://zipkin:9411/api/v2/spans
+      - eureka.client.serviceUrl.defaultZone=http://discovery-service:8761/eureka/
+      - logging.file=/api-logs/orders-ws.log
+
+networks:
+  ecommerce-network:
+    external: true

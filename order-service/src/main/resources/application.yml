@@ -19,13 +19,13 @@ spring:
     datasource:
     show-sql: true
   datasource:
-    driver-class-name: org.h2.Driver
-    url: jdbc:h2:mem:testdb
-    generate-unique-name: false
-#    driver-class-name: org.mariadb.jdbc.Driver
-#    url: jdbc:mariadb://localhost:3306/mydb
-#    username: root
-#    password: 1q2w3e4r
+#    driver-class-name: org.h2.Driver
+#    url: jdbc:h2:mem:testdb
+#    generate-unique-name: false
+    driver-class-name: org.mariadb.jdbc.Driver
+    url: jdbc:mariadb://localhost:3306/mydb
+    username: root
+    password: 1q2w3e4r
 
 
 eureka:
