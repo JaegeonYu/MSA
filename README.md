@@ -75,7 +75,7 @@ $ docker-compose up -d
 4. [Spring Cloud Bus Amqp & RabbitMQ](https://anythingis.tistory.com/192)
 5. [Apache Kafka & Kafka Connect](https://anythingis.tistory.com/193)
 6. [Insert Query Spring to Kafka로 위임](https://anythingis.tistory.com/195)
-7[CircuitBreaker](https://anythingis.tistory.com/196)
+7. [CircuitBreaker](https://anythingis.tistory.com/196)
 
 ## Trouble Shooting
 1. [JJWT 의존성, WeakKeyExcpetion](https://anythingis.tistory.com/190)
