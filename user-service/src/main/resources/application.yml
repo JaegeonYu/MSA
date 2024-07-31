@@ -1,18 +1,10 @@
 server:
-  port: 0
+  port: 60000
 
 spring:
   application:
     name: user-service
-  zipkin:
-    base-url: http://zipkin:9411
-    enabled: true
 
-  rabbitmq:
-    host: 127.0.0.1
-    port: 5672
-    username: guest
-    password: guest
   h2:
     console:
       enabled: true
@@ -29,26 +21,13 @@ spring:
       password:
   datasource:
     generate-unique-name: false
-  cloud:
-    config:
-      name: ecommerce
-  config:
-    import: optional:configserver:http://config-service:8888
 #  profiles:
 #    active: dev
 
-eureka:
-  instance:
-    instance-id: ${spring.application.name}:${spring.application.instance_id:${random.value}}
-  client:
-    register-with-eureka: true
-    fetch-registry: true
-    service-url:
-      defaultZone: http://localhost:8761/eureka
-
-
 greeting:
   message: Welcome to the Simple E-commerce
+
+order-service-url: ${ORDER-SERVICE-URL}
 
 logging:
   level:
@@ -60,17 +39,14 @@ logging:
 #  expiration_time: cloud config
 #  secret: cloud config
 management:
-  tracing:
-    sampling:
-      probability: 1.0
-    propagation:
-      consume: B3
-      produce: B3_MULTI
-  zipkin:
-    tracing:
-      endpoint: "http://localhost:9411/api/v2/spans"
   endpoints:
     web:
       exposure:
-        include: refresh, health, beans, busrefresh, info, metrics, prometheus
+        include: health, beans, busrefresh, info, metrics, prometheus
 
+gateway:
+  ip: ${GATEWAY_IP}
+
+token:
+  expiration_time: ${TOKEN_EXPIRATION_TIME}
+  secret: ${TOKEN_SECRET}

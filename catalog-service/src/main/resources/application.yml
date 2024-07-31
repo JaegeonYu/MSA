@@ -1,9 +1,14 @@
 server:
-  port: 0
+  port: 8080
 
 spring:
   application:
     name: catalog-service
+  kafka:
+    consumer:
+      bootstrap-servers: ${BOOTSTRAP-SERVERS}
+      group-id: consumer_group01
+      auto-offset-reset: earliest
   h2:
     console:
       enabled: true
@@ -26,14 +31,6 @@ spring:
   datasource:
     generate-unique-name: false
 
-eureka:
-  instance:
-    instance-id: ${spring.application.name}:${spring.application.instance_id:${random.value}}
-  client:
-    register-with-eureka: true
-    fetch-registry: true
-    service-url:
-      defaultZone: http://localhost:8761/eureka
 logging:
   level:
     com.example.catalogservice: debug

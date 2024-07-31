@@ -5,20 +5,9 @@ services:
     build:
       context: .
       dockerfile: Dockerfile
-    image: yjk9805/user-service:1.0
+    image: jaegeonyoo/user-service:k8s_1.0
     container_name: user-service
     restart: always
-    networks:
-      - ecommerce-network
     environment:
-      - spring.cloud.config.name=ecommerce
-      - spring.config.import=configserver:http://config-service:8888
-      - spring.rabbitmq.host=rabbitmq
-      - spring.zipkin.base-url=http://zipkin:9411
-      - management.zipkin.tracing.endpoint=http://zipkin:9411/api/v2/spans
-      - eureka.client.serviceUrl.defaultZone=http://discovery-service:8761/eureka/
       - logging.file=/api-logs/users-ws.log
 
-networks:
-  ecommerce-network:
-    external: true
